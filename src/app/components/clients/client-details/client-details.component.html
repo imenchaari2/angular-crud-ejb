@@ -1,0 +1,86 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentClient.id">
+    <h4>Tutorial</h4>
+    <div>
+      <label><strong>Nom:</strong></label> {{ currentClient.nom }}
+    </div>
+    <div>
+      <label><strong>Prenom:</strong></label>
+      {{ currentClient.prenom }}
+    </div>
+    <div>
+      <label><strong>addresse:</strong></label>
+      {{ currentClient.addresse }}
+    </div>
+
+
+    <a
+      class="badge badge-warning"
+      routerLink="/clients/{{ currentClient.id }}"
+    >
+      Edit client
+    </a>
+  </div>
+
+  <div *ngIf="!currentClient">
+    <br />
+    <p>Please click on a Client...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentClient.id" class="edit-form">
+    <h4>Client</h4>
+    <form>
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nom"
+          [(ngModel)]="currentClient.nom"
+          name="nom"
+        />
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prenom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="prenom"
+          [(ngModel)]="currentClient.prenom"
+          name="prenom"
+        />
+      </div>
+      <div class="form-group">
+        <label for="addresse">Addresse</label>
+        <input
+          type="text"
+          class="form-control"
+          id="addresse"
+          [(ngModel)]="currentClient.addresse"
+          name="addresse"
+        />
+      </div>
+
+    </form>
+
+    <button class="badge badge-danger mr-2" (click)="deleteClient()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateClient()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentClient.id">
+    <br />
+    <p>Cannot access this Tutorial...</p>
+  </div>
+</ng-template>

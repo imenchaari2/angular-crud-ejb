@@ -1,0 +1,46 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nom"
+          required
+          [(ngModel)]="client.nom"
+          name="nom"
+        />
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prenom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="prenom"
+          required
+          [(ngModel)]="client.prenom"
+          name="prenom"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="addresse">Addresse</label>
+        <input
+          class="form-control"
+          id="addresse"
+          required
+          [(ngModel)]="client.addresse"
+          name="addresse"
+        />
+      </div>
+
+      <button (click)="saveClient()" class="btn btn-success">Add client</button>
+    </div>
+
+<!--    <div *ngIf="!submitted">-->
+<!--      <h4>Tutorial was submitted successfully!</h4>-->
+<!--      <button class="btn btn-success" (click)="newClient()">Add</button>-->
+<!--    </div>-->
+  </div>
+</div>
