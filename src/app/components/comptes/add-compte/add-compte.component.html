@@ -4,7 +4,7 @@
       <div class="form-group">
         <label *ngIf="rib=== undefined" for="client" >Client</label>
         <select *ngIf="rib=== undefined" class="form-control" name="client" id="client" [(ngModel)]="client1">
-          <option *ngFor="let client of clientList" [ngValue]="client1">{{client.id}} - {{client.nom}} {{client.prenom}}</option>
+          <option *ngFor="let client of clientList" [ngValue]="client">{{client.id}} - {{client.nom}} {{client.prenom}}</option>
         </select>
         <label *ngIf="rib !==undefined" for="client1" >Client</label>
         <select *ngIf="rib!== undefined" class="form-control" name="client1" id="client1" [(ngModel)]="client1">

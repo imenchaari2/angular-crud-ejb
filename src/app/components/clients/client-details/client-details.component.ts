@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Client} from "../../../models/Client";
 import {ClientService} from "../../../services/client.service";
+import {CompteService} from "../../../services/compte.service";
 
 @Component({
   selector: 'app-clients-details',
@@ -22,6 +23,7 @@ export class ClientDetailsComponent implements OnInit {
 
   constructor(
     private clientService: ClientService,
+    private compteService: CompteService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -43,22 +45,6 @@ export class ClientDetailsComponent implements OnInit {
       });
   }
 
-
-
-  updateClient(): void {
-    this.message = '';
-
-    this.clientService.updateClient( this.currentClient)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.router.navigate(['/list-clients']);
-          // this.message = res.message ? res.message : 'This tutorial was updated successfully!';
-        },
-        error: (e) => console.error(e)
-      });
-  }
-
   deleteClient(): void {
     this.clientService.deleteClient(this.currentClient.id)
       .subscribe({
@@ -69,5 +55,6 @@ export class ClientDetailsComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+
 
 }

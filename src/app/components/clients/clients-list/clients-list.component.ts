@@ -31,11 +31,7 @@ export class ClientsListComponent implements OnInit {
       });
   }
 
-  refreshList(): void {
-    this.getClients();
-    this.currentClient = {};
-    this.currentIndex = -1;
-  }
+
 
   setActiveClient(client: Client, index: number): void {
     this.currentClient = client;

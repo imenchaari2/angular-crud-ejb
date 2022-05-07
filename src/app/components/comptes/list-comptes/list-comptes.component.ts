@@ -3,7 +3,7 @@ import {Client} from "../../../models/Client";
 import {Compte} from "../../../models/Compte";
 import {ClientService} from "../../../services/client.service";
 import {CompteService} from "../../../services/compte.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-comptes',
@@ -11,11 +11,21 @@ import {Router} from "@angular/router";
   styleUrls: ['./list-comptes.component.css']
 })
 export class ListComptesComponent implements OnInit {
+  id!: number;
   comptesList!: Compte[]
+  listComptesByClient!: Compte[]
 
-  constructor(private clientService: ClientService,private compteService : CompteService ,private router: Router) { }
+  constructor(private clientService: ClientService,
+              private compteService : CompteService ,
+              private activatedRoute: ActivatedRoute) { }
   ngOnInit(): void {
-    this.getComptes();
+    this.id = this.activatedRoute.snapshot.params['id'];
+    if(this.id === undefined){
+      this.getComptes();
+    }else{
+      this.listeComptesByClient(this.id);
+    }
+
   }
 
   getComptes(): void {
@@ -40,7 +50,16 @@ export class ListComptesComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
-
+  listeComptesByClient(id : number) {
+    this.compteService.getComptesByClient(id)
+      .subscribe({
+        next: (data) => {
+          this.listComptesByClient = data;
+          console.log("listComptesByClient",data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
 
 
 

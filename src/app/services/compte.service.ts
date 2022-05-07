@@ -27,5 +27,7 @@ export class CompteService {
   }
 
 
-
+  getComptesByClient(id: number): Observable<Compte[]> {
+    return this.http.get<Compte[]>(`${this.apiUrl}/comptesByClients/${id}`);
+  }
 }

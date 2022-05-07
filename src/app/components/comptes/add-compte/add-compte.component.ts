@@ -27,7 +27,7 @@ export class AddCompteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.rib)
+    console.log(this.client1)
     this.getClients();
     this.rib = this.activatedRoute.snapshot.params['id'];
 
@@ -47,8 +47,9 @@ export class AddCompteComponent implements OnInit {
   }
   OnSubmit() {
     if (this.rib === undefined) {
-      console.log('added');
+
       this.saveCompte();
+      console.log('added');
 
     } else {
       this.updateCompte();
@@ -72,7 +73,7 @@ export class AddCompteComponent implements OnInit {
       solde: this.solde,
 
     };
-    console.log(data);
+    console.log("dataaaaaaaaaaaaaaaaaaaaaaaaa",data);
 
     this.compteService.addCompte(data)
       .subscribe({

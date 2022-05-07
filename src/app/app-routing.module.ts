@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'list-clients', pathMatch: 'full' },
   { path: 'list-clients', component: ClientsListComponent },
   { path: 'list-comptes', component: ListComptesComponent },
-  { path: 'clients/:id', component: ClientDetailsComponent },
+  { path: 'list-comptes/:id', component: ListComptesComponent },
+  { path: 'clients/:id', component: AddClientComponent },
   { path: 'comptes/:id', component: AddCompteComponent },
   { path: 'add-compte', component: AddCompteComponent },
   { path: 'add-client', component: AddClientComponent }
